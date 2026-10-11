@@ -1,0 +1,12 @@
+.vs/
+*.vsidx
+*.exe
+*.obj
+*.pdb
+*.ilk
+*.sqlite
+*.db
+*.db-shm
+*.db-wal
+lab1_1
+lab1_2
