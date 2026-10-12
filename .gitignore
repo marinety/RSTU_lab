@@ -10,3 +10,18 @@
 *.db-wal
 lab1_1
 lab1_2
+
+*.o
+*.obj
+*.out
+*.dSYM
+# Каталоги CMake
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+# Настройки редактора, которые обычно являются локальными
+.vscode/ipch/
+.vscode/.browse.VC.db
+
+.vscode/
