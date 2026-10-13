@@ -16,15 +16,13 @@ int main() {
             (std::pow(n, 3) / std::pow(n - 1, 3)) /
             ((3 * n - 5) * (3 * n - 4) * (3 * n - 3));
 
-        a *= ratio;   // вычисляем следующий член ряда
+        a *= ratio;   
         sum += a;
 
     } while (std::abs(a) > eps);
 
     std::cout << std::fixed << std::setprecision(4)
               << "Сумма ряда: " << sum << std::endl;
-
-   
 
     return 0;
 }
