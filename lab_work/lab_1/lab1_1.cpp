@@ -4,7 +4,8 @@
 double doubleResult();
 float floatResult();
 
-int main() {
+int main() 
+{
     double resultDouble = doubleResult();
     std::cout << "result double:" << resultDouble << std::endl;
 
@@ -14,7 +15,8 @@ int main() {
     return 0;
 }
 
-double doubleResult() {
+double doubleResult() 
+{
     double a = 1000;
     double b = 0.0001;
 
@@ -25,7 +27,8 @@ double doubleResult() {
    return result;
 }
 
-float floatResult() {
+float floatResult() 
+{
     float a = 1000;
     float b = 0.0001;
 

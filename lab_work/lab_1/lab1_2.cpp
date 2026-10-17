@@ -1,6 +1,7 @@
 #include <iostream>
 
-int main(){
+int main()
+{
     int m,n,result;
 
     std::cout << "Enter m" << std::endl;
