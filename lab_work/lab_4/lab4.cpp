@@ -57,6 +57,7 @@ void printCircular(int arr[], int length, int k)
         return;
     }
     int start = k % length;
+    
     for (int i = 0; i < length; i++)
     {
         cout << arr[(start +i) % length] << " ";
