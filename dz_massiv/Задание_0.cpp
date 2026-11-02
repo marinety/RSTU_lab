@@ -3,33 +3,37 @@
 using namespace std;
 
 int main() {
-    const int MAX = 100;
+    const int MAX = 25;
     int a[MAX][MAX];
-    int rows, cols;
+    int sum_arr[MAX];
+    int N;
 
-    cout << "Введите количество строк и столбцов: ";
-    cin >> rows >> cols;
-
-    cout << "Введите элементы матрицы:\n";
-    for (int i = 0; i < rows; i++)
-        for (int j = 0; j < cols; j++)
-            cin >> a[i][j];
-
-    cout << "Суммы строк:\n";
-    for (int i = 0; i < rows; i++) {
-        int sum = 0;
-        for (int j = 0; j < cols; j++)
-            sum += a[i][j];
-
-        cout << "Строка " << i + 1 << ": " << sum << '\n';
-    }
+    cout << "Ведите размерность матрицы (0 < N <= 25):\n ";
+    cin >> N;
 
     cout << "Матрица:\n";
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++)
+
+    for (int i = 0; i < N; i++) {
+        sum_arr[i] = 0;
+
+        for (int j = 0; j < N; j++) {
+            cin >> a[i][j];
+            sum_arr[i] += a[i][j];
+        }
+    }
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
             cout << setw(6) << a[i][j];
-        cout << '\n';
+        }
+        cout << endl;
     }
 
+    cout << "Массив сумм строк:\n";
+
+    for (int i = 0; i < N; i++) {
+        cout << setw(6) << sum_arr[i];
+    }
+
+    cout << endl;
     return 0;
 }
