@@ -24,5 +24,6 @@ int main(){
     }else{
         cout << "порядок неверен ";
     }
+    
     return 0;
 }

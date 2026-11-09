@@ -8,7 +8,6 @@ int main(){
 
     int pred_el;
     int tek_el;
-
     bool a = false;
 
     cin >> pred_el;

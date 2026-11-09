@@ -9,6 +9,7 @@ int main(){
     int x;
     int minn = 0;
     int maxx = 0;
+    
     bool first = true;
 
     for (int i = 0; i < n; i++){
@@ -29,6 +30,5 @@ int main(){
     }
     cout << "минимум: " << minn << endl;
     cout << "максимум: " << maxx << endl;
-
     return 0;
 }

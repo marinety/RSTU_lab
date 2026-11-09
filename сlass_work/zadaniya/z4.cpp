@@ -9,6 +9,7 @@ int Summ(int n)
     return (n % 10) + Summ(n / 10);
 }
 
+
 int main()
 {
     int N = 57321;

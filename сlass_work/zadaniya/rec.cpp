@@ -10,7 +10,6 @@ long long factorial(int n)
     }
     return n * factorial(n-1);
 }
-
 int main()
 {
     int n = 5;

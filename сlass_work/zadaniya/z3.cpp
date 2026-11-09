@@ -19,7 +19,6 @@ int main()
 
     int T_m_1 = h1 * 60 + m1;
     int T_m_2 = h2 * 60 + m2;
-
     int diff_m = T_m_2 - T_m_1;
 
     if (diff_m < 0) 
