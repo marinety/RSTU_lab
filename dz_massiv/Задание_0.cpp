@@ -21,6 +21,9 @@ int main() {
             sum_arr[i] += a[i][j];
         }
     }
+    
+    cout << endl;
+    
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             cout << setw(6) << a[i][j];
