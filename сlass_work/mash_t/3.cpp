@@ -7,9 +7,9 @@ int main() {
     cout << "Введите слово: ";
     cin >> word;
 
-    char temp = word[0];
+    char b = word[0];
     word[0] = word[1];
-    word[1] = temp;
+    word[1] = b;
 
     cout << "Результат: " << word << '\n';
     return 0;
