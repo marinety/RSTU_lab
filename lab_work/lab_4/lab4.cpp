@@ -1,66 +1,83 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-void printCircular(int arr[], int length, int k);
-
-int main() 
+int main()
 {
+    srand(time(0));
     const int N = 100;
     int a[N];
-    int elements = 0;
-    int k;
+    int n, k;
 
-    cout << "Введите начальное количество элементов массива: ";
-    cin >> elements;
-    cout << " Введите элементы массива" << endl;
-    for (int i = 0; i < elements; i++)
+    cout << "Введите количество элементов массива (от 1 до " << N - 2 << "): ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        a[i] = rand() % 100;
     }
-    cout << "Введите индекс К для начала отсчета (1-" << elements << "): ";
+
+    cout << "Исходный массив: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+
+    cout << "Введите номер K от 1 до " << n << ": ";
     cin >> k;
     k--;
 
-    cout << "2) Кольцевая печать с " << k + 1 << "-го элемента:" << endl;
-    printCircular(a, elements, k);
-
-    if (elements > 0 && elements +2 <= N)
+    cout << "Обход кольца c K ";
+    for (int i = 0; i < n; i++)
     {
-        int first = a[0];
-        int last = a[elements - 1];
-        a[elements] = first;
-        a[elements +1] = last;
-        elements +=2;
-        cout << "3) Добавлены элементы " << first << " и " << last << " текущая длина: "<< elements << endl;
-    }
-        int new_size = 0;
-        for (int i = 0; i < elements; i++)
-        {
-            if (a[i] % 2 != 0) 
-            {
-                a[new_size] = a[i];
-                new_size ++;
-            }
-        }
-        elements = new_size;
-        cout << "4) Четные элементы удалены. Новая длина: " << elements << endl;
-        cout << "5)  Итоговое кольцо: " << endl;
-        printCircular(a, elements, k);
-        return 0; 
-}
-void printCircular(int arr[], int length, int k)
-{
-    if (length == 0)
-    {
-        cout << "Кольцо пустое" << endl;
-        return;
-    }
-    int start = k % length;
-    
-    for (int i = 0; i < length; i++)
-    {
-        cout << arr[(start +i) % length] << " ";
+        cout << a[(k + i) % n] << " ";
     }
     cout << endl;
+
+    int first_el = a[0];
+    int last_el = a[n - 1];
+
+    a[n] = first_el;
+    a[n + 1] = last_el;
+    n += 2; 
+
+    cout << "Массив после добавления первого и последнего элементов: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+
+    int i = 0;
+    while (i < n)
+    {
+        if (a[i] % 2 == 0)
+        {
+            for (int j = i; j < n - 1; j++)
+            {
+                a[j] = a[j + 1];
+            }
+            n--;
+        }else
+        {
+            i++;
+        }
+    }
+
+    if (n > 0)
+    {
+        k = k % n; 
+
+        cout << "Последний обход кольца начиная с элемента K: ";
+        for (int i = 0; i < n; i++)
+        {
+            cout << a[(k + i) % n] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
 }
