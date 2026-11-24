@@ -28,8 +28,7 @@ int main() {
     cout << endl;
     
     double salary = (worker.daysWorked * worker.payDay) + worker.prize;
-    cout << "работник - " << worker.fullname << "\n";
+    cout << "работник:  " << worker.fullname << "\n";
     cout << "заработная плата = " << salary << " рублей \n";
-
     return 0;
 }
