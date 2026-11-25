@@ -19,18 +19,17 @@ void processString(char s[]) {
         while (i < len && s[i] == ' ') {
             i++;
         }
-        if (i >= len || s[i] == '.') {
-            break;
+    
+        if (i < len && s[i] != '.') {
+            int j = 0;
+            while (i < len && s[i] != ' ' && s[i] != '.') {
+                words[count][j] = s[i];
+                i++;
+                j++;
+            }
+            words[count][j] = '\0'; 
+            count++;
         }
-
-        int j = 0;
-        while (i < len && s[i] != ' ' && s[i] != '.') {
-            words[count][j] = s[i];
-            i++;
-            j++;
-        }
-        words[count][j] = '\0'; 
-        count++;
     }
 
     for (int a = 0; a < count - 1; a++) {
@@ -66,7 +65,6 @@ int main() {
 
     cout << "Введите строку (в конце точка):\n";
     fgets(s, 256, stdin);
-
     int len = strlen(s);
     if (len > 0 && s[len - 1] == '\n') {
         s[len - 1] = '\0';
