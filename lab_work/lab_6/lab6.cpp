@@ -1,70 +1,78 @@
 #include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include <cstdio>
+#include <cstring>
 
 using namespace std;
 
-int main() {
-    char s[256];
-    cout << "Введите строку (в конце текста точку):\n";
-    gets(s);
+bool isLetter(char c) {
+    unsigned char uc = c;
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (uc >= 128);
+}
 
-    int len = strlen(s);
-    if (len > 0 && s[len - 1] == '\n') {
-        s[len - 1] = '\0';
-        len--;
-    }
+void processString(char s[]) {
+    char words[100][256]; 
+    int count = 0;        
+    int len = strlen(s);  
 
-    bool hasDot = false;
-    if (len > 0 && s[len - 1] == '.') {
-        hasDot = true;
-        s[len - 1] = '\0';
-    }
-
-    char words[128][256];
-    int wordCount = 0;
-    char* token = strtok(s, " ");
-    while (token != NULL) {
-        strcpy(words[wordCount], token);
-        wordCount++;
-        token = strtok(NULL, " ");
-    }
-
-    int letterIndices[128];
-    int letterCount = 0;
-    for (int i = 0; i < wordCount; i++) {
-        if (isalpha((unsigned char)words[i][0])) {
-            letterIndices[letterCount] = i;
-            letterCount++;
+    int i = 0;
+    while (i < len && s[i] != '.') {
+        while (i < len && s[i] == ' ') {
+            i++;
         }
+        if (i >= len || s[i] == '.') {
+            break;
+        }
+
+        int j = 0;
+        while (i < len && s[i] != ' ' && s[i] != '.') {
+            words[count][j] = s[i];
+            i++;
+            j++;
+        }
+        words[count][j] = '\0'; 
+        count++;
     }
 
-    for (int i = 0; i < letterCount - 1; i++) {
-        for (int j = 0; j < letterCount - i - 1; j++) {
-            int idx1 = letterIndices[j];
-            int idx2 = letterIndices[j + 1];
-
-            if (strcmp(words[idx1], words[idx2]) > 0) {
-                char temp[256];
-                strcpy(temp, words[idx1]);
-                strcpy(words[idx1], words[idx2]);
-                strcpy(words[idx2], temp);
+    for (int a = 0; a < count - 1; a++) {
+        for (int b = a + 1; b < count; b++) {
+            if (isLetter(words[a][0]) && isLetter(words[b][0])) {
+                if (strcmp(words[a], words[b]) > 0) {
+                    char temp[256];
+                    strcpy(temp, words[a]);
+                    strcpy(words[a], words[b]);
+                    strcpy(words[b], temp);
+                }
             }
         }
     }
 
-    cout << "\nРезультат обработки:\n";
-    for (int i = 0; i < wordCount; i++) {
-        cout << words[i];
-        if (i < wordCount - 1) {
-            cout << " ";
+    int pos = 0;
+    for (int k = 0; k < count; k++) {
+        for (int j = 0; words[k][j] != '\0'; j++) {
+            s[pos] = words[k][j];
+            pos++;
+        }
+        if (k < count - 1) {
+            s[pos] = ' ';
+            pos++;
         }
     }
-    if (hasDot) {
-        cout << ".";
-    }
-    cout << endl;
+    s[pos] = '.';      
+    s[pos + 1] = '\0'; 
+}
 
+int main() {
+    char s[256]; 
+
+    cout << "Введите строку (в конце точка):\n";
+    fgets(s, 256, stdin);
+
+    int len = strlen(s);
+    if (len > 0 && s[len - 1] == '\n') {
+        s[len - 1] = '\0';
+    }
+
+    processString(s);
+    cout << "Результат:" << s << endl;
     return 0;
 }
