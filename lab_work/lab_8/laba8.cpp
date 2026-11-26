@@ -80,7 +80,6 @@ void deleteFirstThree(const char* fname) {
 
 void addBefore(const char* fname, const char* target) {
     
-
     cout << "Введите данные новой книги:\n";
     Book newBook = inputBook();
 
