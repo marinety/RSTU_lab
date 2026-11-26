@@ -79,10 +79,7 @@ void deleteFirstThree(const char* fname) {
 }
 
 void addBefore(const char* fname, const char* target) {
-    if (!findBook(fname, target)) {
-        cout << "Книга не найдена!\n";
-        return;
-    }
+    
 
     cout << "Введите данные новой книги:\n";
     Book newBook = inputBook();
@@ -107,10 +104,10 @@ void addBefore(const char* fname, const char* target) {
 
 int main() {
     const char* file = "books.dat";
-
+    
     createFile(file);
     printFile(file);
-    
+
     cout << "Удаляем 3 первых элемента...\n";
     deleteFirstThree(file);
     printFile(file);
