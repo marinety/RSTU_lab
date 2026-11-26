@@ -2,8 +2,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
-
-
 using namespace std;
 
 const int maxsize = 20;
@@ -62,7 +60,6 @@ bool check(int a[maxsize][maxsize], int n) {
 
 int main() {
     srand(time(0));
-
     int n;
     cout << "введите размер матрицы N (от 2 до " << maxsize << "): ";
     cin >> n;

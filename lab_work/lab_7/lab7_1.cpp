@@ -49,7 +49,7 @@ int main() {
     cout << "Максимальный элемент массива: " << max_element << endl;
 
     delete[] arr;
-
+    
     const char* text = "вчера было холодно";
     int longest_word = process(text);
     cout << "строка : " << text << endl;
